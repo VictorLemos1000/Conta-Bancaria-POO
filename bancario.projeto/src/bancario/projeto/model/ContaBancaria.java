@@ -11,11 +11,19 @@ public class ContaBancaria {
 	 */
 	private Integer numeroConta;
 	private float saldo;
+	// O tipo LocalDateTime ele determida data e hora que algo foi criado,
+	// neste caso é a data de abertura de uma conta bancária.
 	private LocalDateTime dataAbertura;
 	private boolean status;
 
-	// ArrayList do tipo ContaBancaria
+	/*
+	 * ArrayList do tipo ContaBancaria;
+	 * Este atributo contas ele vai fazer uma
+	 * listagem de contas associadas a um determinado cliente;
+	 */
+			  // Dentro do diamente é onde estar determinado o tipo do ArrayList
 	ArrayList<ContaBancaria> contas;
+	
 	public ContaBancaria() {
 		
 	}
@@ -45,6 +53,7 @@ public class ContaBancaria {
 		return Objects.equals(numeroConta, other.numeroConta);
 	}
 
+	// Métodos geters e seters para os respectivos atributos dentro da classe;
 	public Integer getNumeroConta() {
 		return numeroConta;
 	}
@@ -85,22 +94,28 @@ public class ContaBancaria {
 				+ ", status=" + status + "]";
 	}
 
+	/*
+	 * O método de depositar tem como foco incluir
+	 * certa quantia a sua respectiva conta caso necessário
+	 * nesta atividade só podemos adicionar certa quantia caso
+	 * ela seja maior que 
+	 */
 	public void depositar(float quantia) {
 		if (status) {
-			if (quantia > 0) {
+			if (quantia > 0.0f) {
 				this.saldo += quantia;
 				System.out.println("Deposito realizado com sucesso.");
 			} else {
 				System.err.println("Valor invalido para deposito.");
 			}
 		} else {
-			System.err.println("Opera��o n�o permitida. Conta desativada.");
+			System.err.println("Operação não permitida. Conta desativada.");
 		}
 	}
 
 	public void sacar(float quantia) {
 		if (status) {
-			if (quantia > 0) {
+			if (quantia > 0.0f) {
 				if (this.saldo >= quantia) {
 					this.saldo -= quantia;
 					System.out.println("Saque realizado com sucesso!");
@@ -111,7 +126,7 @@ public class ContaBancaria {
 				System.err.println("Valor invalido para saque.");
 			}
 		} else {
-			System.err.println("Opera��o n�o permitida. Conta desativada.");
+			System.err.println("Operação não permitida. Conta desativada.");
 		}
 
 	}
